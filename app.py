@@ -206,6 +206,30 @@ def preprocess_input():
         'proc_lab_count', 'total_procedures', 'bmi_age_index'
     ]
 
+    # Reorder kolom sesuai urutan saat training
+    expected_cols = [
+        'age', 'income', 'education', 'household_size', 'dependents',
+        'bmi', 'smoker', 'alcohol_freq', 'visits_last_year',
+        'hospitalizations_last_3yrs', 'days_hospitalized_last_3yrs',
+        'medication_count', 'systolic_bp', 'diastolic_bp', 'ldl', 'hba1c',
+        'network_tier', 'deductible', 'copay', 'policy_term_years',
+        'policy_changes_last_2yrs', 'provider_quality', 'risk_score',
+        'claims_count', 'chronic_count', 'hypertension', 'diabetes',
+        'asthma', 'copd', 'cardiovascular_disease', 'cancer_history',
+        'kidney_disease', 'liver_disease', 'arthritis', 'mental_health',
+        'proc_imaging_count', 'proc_surgery_count', 'proc_physio_count',
+        'proc_consult_count', 'proc_lab_count', 'is_high_risk',
+        'had_major_procedure', 'total_procedures', 'bmi_age_index',
+        'smoker_resp_risk', 'sex_Male', 'sex_Other',
+        'region_East', 'region_North', 'region_South', 'region_West',
+        'urban_rural_Suburban', 'urban_rural_Urban',
+        'marital_status_Married', 'marital_status_Single', 'marital_status_Widowed',
+        'employment_status_Retired', 'employment_status_Self-employed',
+        'employment_status_Unemployed',
+        'plan_type_HMO', 'plan_type_POS', 'plan_type_PPO'
+    ]
+
+    df_input = df_input[expected_cols]
     df_input[cols_to_scale] = scaler.transform(df_input[cols_to_scale])
     return df_input
 
